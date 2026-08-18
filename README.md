@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/favicon.ico" alt="Vertex Market Logo" width="100"/>
+  <img src="public/logo.png" alt="Vertex Market Logo" width="100"/>
   <h1>🌟 Vertex Market 🌟</h1>
   <p><strong>Enterprise-Grade MERN eCommerce Frontend</strong></p>
 
