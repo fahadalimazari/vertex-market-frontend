@@ -1,0 +1,16 @@
+{
+  "short_name": "Vertex",
+  "name": "Vertex Market",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ff6a00",
+  "background_color": "#ffffff",
+  "description": "Enterprise-grade global marketplace for fast, reliable shopping."
+}

@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "مرکزی صفحہ",
+    "shop": "خریداری",
+    "categories": "اقسام",
+    "deals": "پیشکشیں",
+    "vendors": "بیچنے والے",
+    "account": "اکاؤنٹ",
+    "cart": "کارٹ",
+    "search": "مصنوعات اور برانڈز تلاش کریں..."
+  },
+  "dashboard": {
+    "myOrders": "میرے آرڈرز",
+    "wishlist": "پسندیدہ اشیاء",
+    "settings": "ترتیبات",
+    "logout": "لاگ آؤٹ",
+    "localizationSettings": "علاقائی ترتیبات",
+    "language": "زبان",
+    "currency": "کرنسی",
+    "country": "ملک / علاقہ",
+    "timezone": "ٹائم زون"
+  },
+  "common": {
+    "save": "محفوظ کریں",
+    "cancel": "منسوخ کریں",
+    "preview": "لائیو پیش نظارہ",
+    "loading": "لوڈ ہو رہا ہے..."
+  },
+  "actions": {
+    "addToCart": "کارٹ میں شامل کریں",
+    "buyNow": "ابھی خریدیں",
+    "trackOrder": "آرڈر ٹریک کریں"
+  }
+}
