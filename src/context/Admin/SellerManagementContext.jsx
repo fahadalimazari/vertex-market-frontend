@@ -32,7 +32,7 @@ export const SellerManagementProvider = ({ children }) => {
       const token = getAuthToken();
       if (!token) return;
 
-      const res = await fetch('http://localhost:5000/api/v1/superadmin/sellers', {
+      const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/superadmin/sellers', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -74,7 +74,7 @@ export const SellerManagementProvider = ({ children }) => {
       }
 
       // Also fetch stats
-      const statsRes = await fetch('http://localhost:5000/api/v1/superadmin/sellers/stats', {
+      const statsRes = await fetch('https://vertex-market-backend.vercel.app/api/v1/superadmin/sellers/stats', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -100,7 +100,7 @@ export const SellerManagementProvider = ({ children }) => {
       const token = getAuthToken();
       if (!token) return;
 
-      const res = await fetch(`http://localhost:5000/api/v1/superadmin/sellers/${id}/status`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/superadmin/sellers/${id}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

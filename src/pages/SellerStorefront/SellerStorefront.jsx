@@ -24,8 +24,8 @@ const SellerStorefront = () => {
       try {
         setLoading(true);
         const [profileRes, productsRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/v1/seller/store/${sellerSlug}`),
-          axios.get(`http://localhost:5000/api/v1/seller/store/${sellerSlug}/products`)
+          axios.get(`https://vertex-market-backend.vercel.app/api/v1/seller/store/${sellerSlug}`),
+          axios.get(`https://vertex-market-backend.vercel.app/api/v1/seller/store/${sellerSlug}/products`)
         ]);
 
         if (profileRes.data.success) {
@@ -54,7 +54,7 @@ const SellerStorefront = () => {
     try {
       setFollowLoading(true);
       const res = await axios.post(
-        `http://localhost:5000/api/v1/seller/store/${seller._id}/follow`,
+        `https://vertex-market-backend.vercel.app/api/v1/seller/store/${seller._id}/follow`,
         {},
         { headers: { Authorization: `Bearer ${sessionService.getSession()?.token}` } }
       );

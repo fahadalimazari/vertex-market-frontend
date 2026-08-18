@@ -30,7 +30,7 @@ const AdminHeader = ({ onMenuClick }) => {
     e.preventDefault();
     try {
       setIsUpdatingProfile(true);
-      const res = await axios.put('http://localhost:5000/api/v1/auth/profile', profileForm, {
+      const res = await axios.put('https://vertex-market-backend.vercel.app/api/v1/auth/profile', profileForm, {
         headers: { Authorization: `Bearer ${adminUser.token}` }
       });
       if (res.data.success) {

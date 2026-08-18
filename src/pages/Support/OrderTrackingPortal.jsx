@@ -17,7 +17,7 @@ const OrderTrackingPortal = () => {
   useEffect(() => {
     const fetchProviders = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/v1/shipping/providers');
+        const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/shipping/providers');
         const data = await res.json();
         if (data.success) setProviders(data.data || []);
       } catch (e) {
@@ -35,7 +35,7 @@ const OrderTrackingPortal = () => {
     }
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/v1/order/track', {
+      const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/order/track', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ orderNumber: orderNumber.trim(), contact: contactInfo })

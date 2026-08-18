@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { sessionService } from '../auth/sessionService';
 
-const API_URL = 'http://localhost:5000/api/v1/seller';
+const API_URL = 'https://vertex-market-backend.vercel.app/api/v1/seller';
 
 const getHeaders = () => {
   const session = sessionService.getSession();

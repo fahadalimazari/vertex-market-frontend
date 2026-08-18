@@ -32,8 +32,8 @@ const Categories = () => {
     const fetchData = async () => {
       try {
         const [catsRes, colsRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/v1/categories'),
-          axios.get('http://localhost:5000/api/v1/collections?featured=true')
+          axios.get('https://vertex-market-backend.vercel.app/api/v1/categories'),
+          axios.get('https://vertex-market-backend.vercel.app/api/v1/collections?featured=true')
         ]);
         
         if (catsRes.data?.success) setCategories(catsRes.data.categories);

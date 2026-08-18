@@ -35,8 +35,8 @@ const FeaturedCategoriesManager = () => {
     setLoading(true);
     try {
       const [featRes, catRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/home/featured-categories/all'),
-        axios.get('http://localhost:5000/api/categories')
+        axios.get('https://vertex-market-backend.vercel.app/api/home/featured-categories/all'),
+        axios.get('https://vertex-market-backend.vercel.app/api/categories')
       ]);
 
       if (featRes.data && featRes.data.success) {
@@ -99,13 +99,13 @@ const FeaturedCategoriesManager = () => {
       };
 
       if (modalMode === 'add') {
-        const res = await axios.post('http://localhost:5000/api/home/featured-categories', payload);
+        const res = await axios.post('https://vertex-market-backend.vercel.app/api/home/featured-categories', payload);
         if (res.data.success) {
           toast.success('Featured category added successfully.');
           addLog('Featured Category Added', `Added category ID: ${categoryId} to homepage featured list.`);
         }
       } else {
-        const res = await axios.put(`http://localhost:5000/api/home/featured-categories/${selectedFeaturedId}`, payload);
+        const res = await axios.put(`https://vertex-market-backend.vercel.app/api/home/featured-categories/${selectedFeaturedId}`, payload);
         if (res.data.success) {
           toast.success('Featured category updated successfully.');
           addLog('Featured Category Updated', `Modified configurations for featured category: ${selectedFeaturedId}`);
@@ -121,7 +121,7 @@ const FeaturedCategoriesManager = () => {
   const handleDelete = async (id, name) => {
     if (window.confirm(`Are you sure you want to remove "${name}" from homepage featured categories?`)) {
       try {
-        await axios.delete(`http://localhost:5000/api/home/featured-categories/${id}`);
+        await axios.delete(`https://vertex-market-backend.vercel.app/api/home/featured-categories/${id}`);
         toast.success('Removed category from homepage.');
         addLog('Featured Category Deleted', `Removed category: "${name}" from homepage featured.`);
         fetchData();
@@ -134,7 +134,7 @@ const FeaturedCategoriesManager = () => {
   const handleToggleStatus = async (item) => {
     try {
       const newStatus = item.status === 'Active' ? 'Inactive' : 'Active';
-      await axios.patch('http://localhost:5000/api/home/featured-categories/status', {
+      await axios.patch('https://vertex-market-backend.vercel.app/api/home/featured-categories/status', {
         id: item._id,
         status: newStatus
       });
@@ -165,7 +165,7 @@ const FeaturedCategoriesManager = () => {
     }));
 
     try {
-      await axios.patch('http://localhost:5000/api/home/featured-categories/reorder', { orders: updatedOrders });
+      await axios.patch('https://vertex-market-backend.vercel.app/api/home/featured-categories/reorder', { orders: updatedOrders });
       toast.success('Display order updated.');
       fetchData();
     } catch (err) {

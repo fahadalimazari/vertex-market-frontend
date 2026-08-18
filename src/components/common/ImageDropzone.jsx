@@ -47,7 +47,7 @@ const ImageDropzone = ({ label, value, onChange, onRemove, isUploading, setIsUpl
     formData.append('image', file);
     try {
       setIsUploading(true);
-      const res = await axios.post('http://localhost:5000/api/v1/upload/cloudinary', formData, {
+      const res = await axios.post('https://vertex-market-backend.vercel.app/api/v1/upload/cloudinary', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       if (res.data.success) {

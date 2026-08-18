@@ -26,7 +26,7 @@ const FeaturedCategoriesGrid = () => {
   useEffect(() => {
     const fetchFeatured = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/v1/categories?featured=true', {
+        const res = await axios.get('https://vertex-market-backend.vercel.app/api/v1/categories?featured=true', {
           params: { _t: Date.now() },
           headers: { 'Cache-Control': 'no-cache' }
         });

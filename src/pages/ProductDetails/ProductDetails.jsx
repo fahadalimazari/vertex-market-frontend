@@ -45,7 +45,7 @@ const ProductDetails = () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.get(`http://localhost:5000/api/products/${slug}`);
+        const res = await axios.get(`https://vertex-market-backend.vercel.app/api/products/${slug}`);
         const p = res.data.data;
         setProduct(p);
         setActiveImage(p.image);

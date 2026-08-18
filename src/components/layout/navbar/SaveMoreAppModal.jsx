@@ -27,7 +27,7 @@ const SaveMoreAppModal = ({ isOpen, onClose }) => {
     const fetchSettings = async () => {
       try {
         setLoading(true);
-        const res = await fetch('http://localhost:5000/api/v1/app-settings');
+        const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/app-settings');
         const data = await res.json();
         if (data.success && data.data) {
           setAppSettings(data.data);

@@ -51,13 +51,13 @@ const Hero = () => {
     if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
       return url;
     }
-    return `http://localhost:5000${url.startsWith('/') ? '' : '/'}${url}`;
+    return `https://vertex-market-backend.vercel.app${url.startsWith('/') ? '' : '/'}${url}`;
   };
 
   useEffect(() => {
     const fetchHeroBanners = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/hero-banners', {
+        const response = await axios.get('https://vertex-market-backend.vercel.app/api/v1/hero-banners', {
           params: { _t: Date.now() }, // Cache buster to ensure live reflection of admin changes
           headers: { 'Cache-Control': 'no-cache' }
         });
@@ -117,7 +117,7 @@ const Hero = () => {
 
   const fetchFlashDeal = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/v1/home/flash-sale', {
+      const res = await axios.get('https://vertex-market-backend.vercel.app/api/v1/home/flash-sale', {
         params: { _t: Date.now() },
         headers: { 'Cache-Control': 'no-cache' }
       });
@@ -137,7 +137,7 @@ const Hero = () => {
     fetchFlashDeal();
     const fetchNewArrivals = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/v1/products', {
+        const res = await axios.get('https://vertex-market-backend.vercel.app/api/v1/products', {
           params: { pageSize: 3, sort: '-createdAt', status: 'Active', _t: Date.now() },
           headers: { 'Cache-Control': 'no-cache' }
         });
@@ -229,7 +229,7 @@ const Hero = () => {
   const handleFlashCardClick = (e) => {
     e.preventDefault();
     if (flashDeal && flashDeal._id) {
-      axios.post(`http://localhost:5000/api/v1/flash-sales/${flashDeal._id}/track`, { event: 'click' }).catch(() => {});
+      axios.post(`https://vertex-market-backend.vercel.app/api/v1/flash-sales/${flashDeal._id}/track`, { event: 'click' }).catch(() => {});
     }
     const slug = flashDeal?.productId?.slug || 'samsung-galaxy-s23-ultra';
     const targetUrl = flashDeal?.buttonUrl || `/product/${slug}`;

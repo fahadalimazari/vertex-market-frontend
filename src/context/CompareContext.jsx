@@ -49,7 +49,7 @@ export const CompareProvider = ({ children }) => {
     try {
       const session = JSON.parse(sessionStr);
       const productIds = items.map(item => item._id || item.id);
-      await fetch('http://localhost:5000/api/v1/auth/compare', {
+      await fetch('https://vertex-market-backend.vercel.app/api/v1/auth/compare', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

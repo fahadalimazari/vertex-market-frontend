@@ -12,7 +12,7 @@ const BrandManagement = () => {
 
   const fetchBrands = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/brands/admin');
+      const res = await axios.get('https://vertex-market-backend.vercel.app/api/brands/admin');
       setBrands(res.data.data || []);
     } catch (error) {
       toast.error('Failed to load brands');
@@ -29,10 +29,10 @@ const BrandManagement = () => {
     e.preventDefault();
     try {
       if (formData.id) {
-        await axios.put(`http://localhost:5000/api/brands/${formData.id}`, formData);
+        await axios.put(`https://vertex-market-backend.vercel.app/api/brands/${formData.id}`, formData);
         toast.success('Brand updated');
       } else {
-        await axios.post('http://localhost:5000/api/brands', formData);
+        await axios.post('https://vertex-market-backend.vercel.app/api/brands', formData);
         toast.success('Brand created');
       }
       setIsModalOpen(false);
@@ -45,7 +45,7 @@ const BrandManagement = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this brand?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/brands/${id}`);
+        await axios.delete(`https://vertex-market-backend.vercel.app/api/brands/${id}`);
         toast.success('Brand deleted');
         fetchBrands();
       } catch (error) {

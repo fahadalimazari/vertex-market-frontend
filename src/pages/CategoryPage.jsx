@@ -39,14 +39,14 @@ const CategoryPage = () => {
       setLoading(true);
       try {
         // 1. Fetch category details from backend
-        const catRes = await axios.get(`http://localhost:5000/api/v1/categories/${effectiveSlug}`);
+        const catRes = await axios.get(`https://vertex-market-backend.vercel.app/api/v1/categories/${effectiveSlug}`);
         if (catRes.data && (catRes.data.data || catRes.data.category)) {
           const fetchedCat = catRes.data.data || catRes.data.category;
           setCategory(fetchedCat);
 
           // Analytics tracking
           try {
-            await axios.post('http://localhost:5000/api/v1/analytics/log', {
+            await axios.post('https://vertex-market-backend.vercel.app/api/v1/analytics/log', {
               event: 'CATEGORY_VIEW',
               target: fetchedCat.slug || effectiveSlug,
               meta: { name: fetchedCat.name }
@@ -61,7 +61,7 @@ const CategoryPage = () => {
 
       // Fetch all categories for related section
       try {
-        const allCatsRes = await axios.get('http://localhost:5000/api/v1/categories');
+        const allCatsRes = await axios.get('https://vertex-market-backend.vercel.app/api/v1/categories');
         if (allCatsRes.data?.success) {
           setAllCategories(allCatsRes.data.categories);
         }
@@ -77,11 +77,11 @@ const CategoryPage = () => {
         if (filters.rating) query.set('rating', filters.rating);
         if (effectiveBrand && !query.get('brand')) query.set('brand', effectiveBrand);
 
-        let url = `http://localhost:5000/api/v1/categories/${effectiveSlug}/products?${query.toString()}`;
+        let url = `https://vertex-market-backend.vercel.app/api/v1/categories/${effectiveSlug}/products?${query.toString()}`;
         if (effectiveSubSlug) {
-          url = `http://localhost:5000/api/v1/categories/${effectiveSlug}/subcategories/${effectiveSubSlug}?${query.toString()}`;
+          url = `https://vertex-market-backend.vercel.app/api/v1/categories/${effectiveSlug}/subcategories/${effectiveSubSlug}?${query.toString()}`;
         } else if (brandSlug) {
-          url = `http://localhost:5000/api/v1/categories/${effectiveSlug}/brands/${brandSlug}?${query.toString()}`;
+          url = `https://vertex-market-backend.vercel.app/api/v1/categories/${effectiveSlug}/brands/${brandSlug}?${query.toString()}`;
         }
 
         const prodRes = await axios.get(url);
@@ -102,7 +102,7 @@ const CategoryPage = () => {
 
       // 3. Fetch global featured products for recommendations and empty states
       try {
-        const featRes = await axios.get('http://localhost:5000/api/v1/catalog/products/featured');
+        const featRes = await axios.get('https://vertex-market-backend.vercel.app/api/v1/catalog/products/featured');
         if (featRes.data && featRes.data.data) {
           setFeaturedProducts(featRes.data.data.slice(0, 4));
         }

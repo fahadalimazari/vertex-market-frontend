@@ -11,7 +11,7 @@ const Sidebar = () => {
   const [categories, setCategories] = useState(staticCategories)
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/v1/categories/active')
+    fetch('https://vertex-market-backend.vercel.app/api/v1/categories/active')
       .then(res => res.json())
       .then(data => {
         if (data.success && data.categories && data.categories.length > 0) {

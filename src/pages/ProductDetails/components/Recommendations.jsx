@@ -43,7 +43,7 @@ export const RecommendationSection = ({ endpoint, title, subtitle, params = {} }
   useEffect(() => {
     const fetchRecommendations = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000${endpoint}`, { params });
+        const res = await axios.get(`https://vertex-market-backend.vercel.app${endpoint}`, { params });
         if (res.data?.success && Array.isArray(res.data.data)) {
           setProducts(res.data.data);
         }

@@ -46,7 +46,7 @@ export const useAddresses = () => {
         setLoading(false);
         return;
       }
-      const res = await fetch('http://localhost:5000/api/v1/addresses', { headers })
+      const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/addresses', { headers })
       const data = await res.json()
       if (data.success) {
         setAddresses(data.data.map(mapToFrontend))
@@ -65,7 +65,7 @@ export const useAddresses = () => {
   const addAddress = async (newAddress) => {
     try {
       const headers = getAuthHeader();
-      const res = await fetch('http://localhost:5000/api/v1/addresses', {
+      const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/addresses', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ export const useAddresses = () => {
   const updateAddress = async (id, updatedData) => {
     try {
       const headers = getAuthHeader();
-      const res = await fetch(`http://localhost:5000/api/v1/addresses/${id}`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/addresses/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ export const useAddresses = () => {
   const removeAddress = async (id) => {
     try {
       const headers = getAuthHeader();
-      const res = await fetch(`http://localhost:5000/api/v1/addresses/${id}`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/addresses/${id}`, {
         method: 'DELETE',
         headers
       })
@@ -121,7 +121,7 @@ export const useAddresses = () => {
   const setDefaultAddress = async (id) => {
     try {
       const headers = getAuthHeader();
-      const res = await fetch(`http://localhost:5000/api/v1/addresses/${id}/default`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/addresses/${id}/default`, {
         method: 'PATCH',
         headers
       })

@@ -43,7 +43,7 @@ const HeroFlashSaleManager = () => {
   const fetchFlashSales = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/v1/flash-sales', {
+      const res = await axios.get('https://vertex-market-backend.vercel.app/api/v1/flash-sales', {
         params: { _t: Date.now() },
       });
       if (res.data.success) {
@@ -58,7 +58,7 @@ const HeroFlashSaleManager = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/v1/products', {
+      const res = await axios.get('https://vertex-market-backend.vercel.app/api/v1/products', {
         params: { pageSize: 100, status: 'Active', _t: Date.now() },
       });
       if (res.data.success || res.data.products) {
@@ -161,10 +161,10 @@ const HeroFlashSaleManager = () => {
 
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/v1/flash-sales/${editingId}`, formData);
+        await axios.put(`https://vertex-market-backend.vercel.app/api/v1/flash-sales/${editingId}`, formData);
         toast.success('Hero Flash Sale campaign updated successfully!');
       } else {
-        await axios.post('http://localhost:5000/api/v1/flash-sales', formData);
+        await axios.post('https://vertex-market-backend.vercel.app/api/v1/flash-sales', formData);
         toast.success('New Hero Flash Sale launched successfully!');
       }
       setIsModalOpen(false);
@@ -177,7 +177,7 @@ const HeroFlashSaleManager = () => {
   const handleToggleStatus = async (id, currentStatus) => {
     try {
       const nextStatus = currentStatus === 'Active' ? 'Inactive' : 'Active';
-      await axios.patch(`http://localhost:5000/api/v1/flash-sales/${id}/status`, { status: nextStatus });
+      await axios.patch(`https://vertex-market-backend.vercel.app/api/v1/flash-sales/${id}/status`, { status: nextStatus });
       toast.success(`Campaign turned ${nextStatus}`);
       fetchFlashSales();
     } catch (err) {
@@ -188,7 +188,7 @@ const HeroFlashSaleManager = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to permanently delete this Hero Flash Sale?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/v1/flash-sales/${id}`);
+      await axios.delete(`https://vertex-market-backend.vercel.app/api/v1/flash-sales/${id}`);
       toast.success('Campaign removed');
       fetchFlashSales();
     } catch (err) {

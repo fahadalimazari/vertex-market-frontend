@@ -13,7 +13,7 @@ const AttributeManagement = () => {
 
   const fetchAttributes = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/attributes');
+      const res = await axios.get('https://vertex-market-backend.vercel.app/api/attributes');
       setAttributes(res.data.attributes || []);
     } catch (error) {
       toast.error('Failed to load attributes');
@@ -24,7 +24,7 @@ const AttributeManagement = () => {
 
   const fetchSubCategories = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/subcategories');
+      const res = await axios.get('https://vertex-market-backend.vercel.app/api/subcategories');
       setSubCategories(res.data.data || res.data || []);
     } catch (error) {
       console.error(error);
@@ -40,10 +40,10 @@ const AttributeManagement = () => {
     e.preventDefault();
     try {
       if (formData.id) {
-        await axios.put(`http://localhost:5000/api/attributes/${formData.id}`, formData);
+        await axios.put(`https://vertex-market-backend.vercel.app/api/attributes/${formData.id}`, formData);
         toast.success('Attribute updated');
       } else {
-        await axios.post('http://localhost:5000/api/attributes', formData);
+        await axios.post('https://vertex-market-backend.vercel.app/api/attributes', formData);
         toast.success('Attribute created');
       }
       setIsModalOpen(false);
@@ -56,7 +56,7 @@ const AttributeManagement = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this attribute?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/attributes/${id}`);
+        await axios.delete(`https://vertex-market-backend.vercel.app/api/attributes/${id}`);
         toast.success('Attribute deleted');
         fetchAttributes();
       } catch (error) {

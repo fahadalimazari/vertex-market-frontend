@@ -68,7 +68,7 @@ const SellerCoupons = () => {
     try {
       const { sessionService } = await import('../../services/auth/sessionService');
       const token = sessionService.getSession()?.token;
-      const res = await fetch(`http://localhost:5000/api/v1/seller/coupons/${id}`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/seller/coupons/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

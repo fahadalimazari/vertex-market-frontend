@@ -73,7 +73,7 @@ const Sellers = () => {
     try {
       const dataStr = localStorage.getItem('vertex_admin_auth_v1') || sessionStorage.getItem('vertex_admin_auth_v1');
       const token = dataStr ? JSON.parse(dataStr).token : '';
-      const res = await fetch(`http://localhost:5000/api/v1/superadmin/sellers/${storeId}`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/superadmin/sellers/${storeId}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
@@ -91,7 +91,7 @@ const Sellers = () => {
     try {
       const dataStr = localStorage.getItem('vertex_admin_auth_v1') || sessionStorage.getItem('vertex_admin_auth_v1');
       const token = dataStr ? JSON.parse(dataStr).token : '';
-      const res = await fetch(`http://localhost:5000/api/v1/superadmin/sellers/${assignBadgeModalId}/badges`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/superadmin/sellers/${assignBadgeModalId}/badges`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ label: selectedBadge.label, icon: selectedBadge.icon, reason: selectedBadge.description })
@@ -117,7 +117,7 @@ const Sellers = () => {
     try {
       const dataStr = localStorage.getItem('vertex_admin_auth_v1') || sessionStorage.getItem('vertex_admin_auth_v1');
       const token = dataStr ? JSON.parse(dataStr).token : '';
-      const res = await fetch(`http://localhost:5000/api/v1/superadmin/sellers/${storeId}/badges/${badgeId}`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/superadmin/sellers/${storeId}/badges/${badgeId}`, {
         method: 'PATCH',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -141,7 +141,7 @@ const Sellers = () => {
       const dataStr = localStorage.getItem('vertex_admin_auth_v1') || sessionStorage.getItem('vertex_admin_auth_v1');
       const token = dataStr ? JSON.parse(dataStr).token : '';
       
-      const res = await fetch(`http://localhost:5000/api/v1/superadmin/sellers/${storeId}/${tab}?page=${currentPage}&limit=${limit}`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/superadmin/sellers/${storeId}/${tab}?page=${currentPage}&limit=${limit}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();

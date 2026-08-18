@@ -38,7 +38,7 @@ const QuickViewModal = ({ isOpen, onClose, product }) => {
       const fetchFullProduct = async () => {
         setLoading(true);
         try {
-          const res = await axios.get(`http://localhost:5000/api/products/${product.slug}`);
+          const res = await axios.get(`https://vertex-market-backend.vercel.app/api/products/${product.slug}`);
           const data = res.data.data;
           setFullProduct(data);
           setActiveImage(data.image || product.image);

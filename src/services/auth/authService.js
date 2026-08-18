@@ -1,6 +1,6 @@
 import { sessionService } from './sessionService';
 
-const API_URL = 'http://localhost:5000/api/v1/auth';
+const API_URL = 'https://vertex-market-backend.vercel.app/api/v1/auth';
 
 export const authService = {
   login: async (email, password, rememberMe = false) => {

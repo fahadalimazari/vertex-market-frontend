@@ -39,7 +39,7 @@ export const AIProvider = ({ children }) => {
     if (!sessionStr) return;
     try {
       const session = JSON.parse(sessionStr);
-      await fetch('http://localhost:5000/api/v1/auth/chat', {
+      await fetch('https://vertex-market-backend.vercel.app/api/v1/auth/chat', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

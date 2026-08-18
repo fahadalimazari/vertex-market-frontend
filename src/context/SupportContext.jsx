@@ -38,7 +38,7 @@ export const SupportProvider = ({ children }) => {
     if (!sessionStr) return null;
     try {
       const session = JSON.parse(sessionStr);
-      const res = await fetch('http://localhost:5000/api/v1/tickets', {
+      const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/tickets', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ export const SupportProvider = ({ children }) => {
     if (!sessionStr) return;
     try {
       const session = JSON.parse(sessionStr);
-      const res = await fetch(`http://localhost:5000/api/v1/tickets/${ticketId}/messages`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/tickets/${ticketId}/messages`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

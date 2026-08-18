@@ -40,7 +40,7 @@ export const useUser = () => {
         const sessionStr = localStorage.getItem('vertex_session_v1');
         const token = sessionStr ? JSON.parse(sessionStr).token : null;
         
-        const res = await fetch('http://localhost:5000/api/v1/upload', {
+        const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/upload', {
           method: 'POST',
           headers: token ? { 'Authorization': `Bearer ${token}` } : {},
           body: formData
@@ -48,7 +48,7 @@ export const useUser = () => {
         const data = await res.json();
         
         if (data.success) {
-          const fullUrl = `http://localhost:5000${data.url}`;
+          const fullUrl = `https://vertex-market-backend.vercel.app${data.url}`;
           setUserProfile(prev => ({ ...prev, avatar: fullUrl }));
           await authService.updateProfile({ avatar: fullUrl });
           await refreshSession();

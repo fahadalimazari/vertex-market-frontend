@@ -31,8 +31,8 @@ export const LocalizationProvider = ({ children }) => {
     const fetchEnterpriseLocalization = async () => {
       try {
         const [langRes, currRes] = await Promise.all([
-          fetch('http://localhost:5000/api/v1/languages'),
-          fetch('http://localhost:5000/api/v1/currencies')
+          fetch('https://vertex-market-backend.vercel.app/api/v1/languages'),
+          fetch('https://vertex-market-backend.vercel.app/api/v1/currencies')
         ]);
         const langData = await langRes.json();
         const currData = await currRes.json();
@@ -163,7 +163,7 @@ export const LocalizationProvider = ({ children }) => {
     if (!sessionStr) return;
     try {
       const session = JSON.parse(sessionStr);
-      await fetch('http://localhost:5000/api/v1/auth/preferences', {
+      await fetch('https://vertex-market-backend.vercel.app/api/v1/auth/preferences', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -23,7 +23,7 @@ const TopBar = () => {
   useEffect(() => {
     const fetchContact = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/v1/contact');
+        const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/contact');
         const data = await res.json();
         if (data.success && data.data?.supportPhone) {
           setSupportPhone(data.data.supportPhone);

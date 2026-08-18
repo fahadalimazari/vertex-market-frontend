@@ -3,7 +3,7 @@ export const fetchTickets = async () => {
   if (!sessionStr) return [];
   try {
     const session = JSON.parse(sessionStr);
-    const res = await fetch('http://localhost:5000/api/v1/tickets', {
+    const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/tickets', {
       headers: {
         'Authorization': `Bearer ${session.token}`
       }

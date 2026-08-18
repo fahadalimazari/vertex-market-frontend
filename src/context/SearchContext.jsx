@@ -78,7 +78,7 @@ export const SearchProvider = ({ children }) => {
     const fetchSearchResults = async () => {
       setIsSearching(true)
       try {
-        const response = await fetch(`http://localhost:5000/api/v1/catalog/products?search=${encodeURIComponent(debouncedQuery)}&limit=8`)
+        const response = await fetch(`https://vertex-market-backend.vercel.app/api/v1/catalog/products?search=${encodeURIComponent(debouncedQuery)}&limit=8`)
         const data = await response.json()
         
         if (data.success && data.data && data.data.products) {
@@ -118,7 +118,7 @@ export const SearchProvider = ({ children }) => {
     if (!sessionStr) return;
     try {
       const session = JSON.parse(sessionStr);
-      await fetch('http://localhost:5000/api/v1/auth/search-history', {
+      await fetch('https://vertex-market-backend.vercel.app/api/v1/auth/search-history', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ export const SearchProvider = ({ children }) => {
     if (!sessionStr) return;
     try {
       const session = JSON.parse(sessionStr);
-      await fetch('http://localhost:5000/api/v1/auth/search-history', {
+      await fetch('https://vertex-market-backend.vercel.app/api/v1/auth/search-history', {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${session.token}`
@@ -152,7 +152,7 @@ export const SearchProvider = ({ children }) => {
     if (!sessionStr) return;
     try {
       const session = JSON.parse(sessionStr);
-      await fetch('http://localhost:5000/api/v1/auth/recently-viewed', {
+      await fetch('https://vertex-market-backend.vercel.app/api/v1/auth/recently-viewed', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

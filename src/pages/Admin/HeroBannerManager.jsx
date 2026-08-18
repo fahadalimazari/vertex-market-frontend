@@ -56,7 +56,7 @@ const HeroBannerManager = () => {
   const fetchBanners = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/v1/hero-banners?admin=true');
+      const response = await axios.get('https://vertex-market-backend.vercel.app/api/v1/hero-banners?admin=true');
       if (response.data && response.data.success) {
         setBanners(response.data.data || []);
       }
@@ -153,10 +153,10 @@ const HeroBannerManager = () => {
       if (!payload.endDate) payload.endDate = null;
 
       if (editingBanner) {
-        await axios.put(`http://localhost:5000/api/v1/hero-banners/${editingBanner._id}`, payload);
+        await axios.put(`https://vertex-market-backend.vercel.app/api/v1/hero-banners/${editingBanner._id}`, payload);
         toast.success('Hero banner updated successfully! ✨');
       } else {
-        await axios.post('http://localhost:5000/api/v1/hero-banners', payload);
+        await axios.post('https://vertex-market-backend.vercel.app/api/v1/hero-banners', payload);
         toast.success('New Hero banner created successfully! 🎉');
       }
       handleCloseModal();
@@ -169,7 +169,7 @@ const HeroBannerManager = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to permanently delete this hero banner?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/v1/hero-banners/${id}`);
+      await axios.delete(`https://vertex-market-backend.vercel.app/api/v1/hero-banners/${id}`);
       toast.success('Hero banner removed');
       fetchBanners();
     } catch (err) {
@@ -180,7 +180,7 @@ const HeroBannerManager = () => {
   const handleToggleStatus = async (id, currentStatus) => {
     try {
       const newStatus = currentStatus === 'Active' ? 'Inactive' : 'Active';
-      await axios.patch(`http://localhost:5000/api/v1/hero-banners/${id}/status`, { status: newStatus });
+      await axios.patch(`https://vertex-market-backend.vercel.app/api/v1/hero-banners/${id}/status`, { status: newStatus });
       toast.success(`Banner status changed to ${newStatus}`);
       fetchBanners();
     } catch (err) {
@@ -199,7 +199,7 @@ const HeroBannerManager = () => {
       copyData.title = `${copyData.title} (Copy)`;
       copyData.displayOrder = banners.length + 1;
 
-      await axios.post('http://localhost:5000/api/v1/hero-banners', copyData);
+      await axios.post('https://vertex-market-backend.vercel.app/api/v1/hero-banners', copyData);
       toast.success('Banner duplicated successfully! 📋');
       fetchBanners();
     } catch (err) {
@@ -219,7 +219,7 @@ const HeroBannerManager = () => {
     const targetOrder = target.displayOrder || targetIndex + 1;
 
     try {
-      await axios.patch('http://localhost:5000/api/v1/hero-banners/reorder', {
+      await axios.patch('https://vertex-market-backend.vercel.app/api/v1/hero-banners/reorder', {
         items: [
           { id: current._id, displayOrder: targetOrder },
           { id: target._id, displayOrder: currentOrder }
@@ -242,11 +242,11 @@ const HeroBannerManager = () => {
 
     try {
       setUploadingField(fieldName || 'media-library');
-      const res = await axios.post('http://localhost:5000/api/v1/upload', fileData, {
+      const res = await axios.post('https://vertex-market-backend.vercel.app/api/v1/upload', fileData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       if (res.data && res.data.success && res.data.url) {
-        const fullUrl = res.data.url.startsWith('http') ? res.data.url : `http://localhost:5000${res.data.url}`;
+        const fullUrl = res.data.url.startsWith('http') ? res.data.url : `https://vertex-market-backend.vercel.app${res.data.url}`;
         if (fieldName) {
           setFormData(prev => ({ ...prev, [fieldName]: fullUrl }));
           toast.success('Image uploaded and applied! 📸');
@@ -264,7 +264,7 @@ const HeroBannerManager = () => {
 
   const fetchMediaItems = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/v1/upload');
+      const res = await axios.get('https://vertex-market-backend.vercel.app/api/v1/upload');
       if (res.data && res.data.success) {
         setMediaItems(res.data.media || res.data.data || []);
       }

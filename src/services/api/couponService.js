@@ -1,6 +1,6 @@
 import { sessionService } from '../auth/sessionService';
 
-const API_URL = 'http://localhost:5000/api/v1/coupons';
+const API_URL = 'https://vertex-market-backend.vercel.app/api/v1/coupons';
 
 export const couponService = {
   getMyVouchers: async () => {

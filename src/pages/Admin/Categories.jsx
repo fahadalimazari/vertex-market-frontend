@@ -51,7 +51,7 @@ const ImageDropzone = ({ label, value, onChange, onRemove, isUploading, setIsUpl
     formData.append('image', file);
     try {
       setIsUploading(true);
-      const res = await axios.post('http://localhost:5000/api/v1/upload/cloudinary', formData, {
+      const res = await axios.post('https://vertex-market-backend.vercel.app/api/v1/upload/cloudinary', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       if (res.data.success) {
@@ -246,7 +246,7 @@ const Categories = () => {
 
   const toggleFeatured = async (id) => {
     try {
-      const res = await axios.patch(`http://localhost:5000/api/v1/categories/${id}/featured`);
+      const res = await axios.patch(`https://vertex-market-backend.vercel.app/api/v1/categories/${id}/featured`);
       toast.success(res.data.message);
       fetchCategories();
     } catch (error) {
@@ -256,7 +256,7 @@ const Categories = () => {
 
   const toggleStatus = async (id) => {
     try {
-      const res = await axios.patch(`http://localhost:5000/api/v1/categories/${id}/status`);
+      const res = await axios.patch(`https://vertex-market-backend.vercel.app/api/v1/categories/${id}/status`);
       toast.success(res.data.message);
       fetchCategories();
     } catch (error) {

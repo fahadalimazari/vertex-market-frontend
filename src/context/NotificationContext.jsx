@@ -85,7 +85,7 @@ export const NotificationProvider = ({ children }) => {
     setLoading(true);
     try {
       const headers = getAuthHeader();
-      const res = await fetch('http://localhost:5000/api/v1/notifications', { headers });
+      const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/notifications', { headers });
       const data = await res.json();
       if (data.success) {
         setNotifications(data.data.map(n => ({ ...n, id: n._id })));
@@ -133,7 +133,7 @@ export const NotificationProvider = ({ children }) => {
     if (isAuthenticated) {
       try {
         const headers = getAuthHeader();
-        await fetch(`http://localhost:5000/api/v1/notifications/${id}/read`, {
+        await fetch(`https://vertex-market-backend.vercel.app/api/v1/notifications/${id}/read`, {
           method: 'PUT',
           headers
         });
@@ -153,7 +153,7 @@ export const NotificationProvider = ({ children }) => {
       try {
         const headers = getAuthHeader();
         await Promise.all(notifications.filter(n => !n.isRead).map(n =>
-          fetch(`http://localhost:5000/api/v1/notifications/${n.id}/read`, {
+          fetch(`https://vertex-market-backend.vercel.app/api/v1/notifications/${n.id}/read`, {
             method: 'PUT',
             headers
           })
@@ -172,7 +172,7 @@ export const NotificationProvider = ({ children }) => {
     if (isAuthenticated) {
       try {
         const headers = getAuthHeader();
-        await fetch(`http://localhost:5000/api/v1/notifications/${id}`, {
+        await fetch(`https://vertex-market-backend.vercel.app/api/v1/notifications/${id}`, {
           method: 'DELETE',
           headers
         });
@@ -195,7 +195,7 @@ export const NotificationProvider = ({ children }) => {
     if (isAuthenticated) {
       try {
         const headers = getAuthHeader();
-        await fetch(`http://localhost:5000/api/v1/notifications/${id}`, {
+        await fetch(`https://vertex-market-backend.vercel.app/api/v1/notifications/${id}`, {
           method: 'DELETE',
           headers
         });
@@ -212,7 +212,7 @@ export const NotificationProvider = ({ children }) => {
       try {
         const headers = getAuthHeader();
         await Promise.all(notifications.map(n =>
-          fetch(`http://localhost:5000/api/v1/notifications/${n.id}`, {
+          fetch(`https://vertex-market-backend.vercel.app/api/v1/notifications/${n.id}`, {
             method: 'DELETE',
             headers
           })
@@ -231,7 +231,7 @@ export const NotificationProvider = ({ children }) => {
     if (isAuthenticated) {
       try {
         const headers = getAuthHeader();
-        await fetch('http://localhost:5000/api/v1/auth/notification-preferences', {
+        await fetch('https://vertex-market-backend.vercel.app/api/v1/auth/notification-preferences', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -281,7 +281,7 @@ export const NotificationProvider = ({ children }) => {
     if (isAuthenticated) {
       try {
         const headers = getAuthHeader();
-        const res = await fetch('http://localhost:5000/api/v1/notifications', {
+        const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/notifications', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

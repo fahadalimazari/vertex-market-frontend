@@ -59,14 +59,14 @@ const SellerProducts = () => {
     formData.append('image', file);
 
     try {
-      const response = await fetch('http://localhost:5000/api/v1/upload', {
+      const response = await fetch('https://vertex-market-backend.vercel.app/api/v1/upload', {
         method: 'POST',
         body: formData
       });
       const data = await response.json();
       
       if (data.success) {
-        setFormValues(prev => ({ ...prev, image: 'http://localhost:5000' + data.url }));
+        setFormValues(prev => ({ ...prev, image: 'https://vertex-market-backend.vercel.app' + data.url }));
         toast.success('Image uploaded successfully');
       } else {
         toast.error(data.error || 'Upload failed');

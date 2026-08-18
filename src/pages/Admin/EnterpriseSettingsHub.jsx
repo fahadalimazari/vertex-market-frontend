@@ -33,13 +33,13 @@ const EnterpriseSettingsHub = () => {
     setLoading(true);
     try {
       const [contRes, langRes, currRes, cmsRes, faqRes, tickRes, shipRes] = await Promise.all([
-        fetch('http://localhost:5000/api/v1/contact'),
-        fetch('http://localhost:5000/api/v1/languages'),
-        fetch('http://localhost:5000/api/v1/currencies'),
-        fetch('http://localhost:5000/api/v1/cms'),
-        fetch('http://localhost:5000/api/v1/faqs'),
-        fetch('http://localhost:5000/api/v1/support'),
-        fetch('http://localhost:5000/api/v1/shipping/providers'),
+        fetch('https://vertex-market-backend.vercel.app/api/v1/contact'),
+        fetch('https://vertex-market-backend.vercel.app/api/v1/languages'),
+        fetch('https://vertex-market-backend.vercel.app/api/v1/currencies'),
+        fetch('https://vertex-market-backend.vercel.app/api/v1/cms'),
+        fetch('https://vertex-market-backend.vercel.app/api/v1/faqs'),
+        fetch('https://vertex-market-backend.vercel.app/api/v1/support'),
+        fetch('https://vertex-market-backend.vercel.app/api/v1/shipping/providers'),
       ]);
 
       const [contData, langData, currData, cmsData, faqData, tickData, shipData] = await Promise.all([
@@ -71,7 +71,7 @@ const EnterpriseSettingsHub = () => {
   const handleSaveContact = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5000/api/v1/contact', {
+      const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/contact', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contact)
@@ -90,7 +90,7 @@ const EnterpriseSettingsHub = () => {
   // 2. Toggle Language Status
   const handleToggleLanguage = async (code, currentStatus) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/v1/languages/${code}`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/languages/${code}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ isEnabled: !currentStatus })
@@ -108,7 +108,7 @@ const EnterpriseSettingsHub = () => {
   // 3. Update Currency Exchange Rate
   const handleUpdateCurrencyRate = async (code, newRate) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/v1/currencies/${code}`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/currencies/${code}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ manualOverrideRate: parseFloat(newRate), exchangeRate: parseFloat(newRate) })
@@ -127,7 +127,7 @@ const EnterpriseSettingsHub = () => {
   const handleSaveCMS = async () => {
     if (!selectedCmsSlug) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/v1/cms/${selectedCmsSlug}`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/cms/${selectedCmsSlug}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(cmsForm)
@@ -152,7 +152,7 @@ const EnterpriseSettingsHub = () => {
       return;
     }
     try {
-      const res = await fetch('http://localhost:5000/api/v1/faqs', {
+      const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/faqs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newFaq)

@@ -26,7 +26,7 @@ const RecommendedForYou = () => {
         }
         
         // Ensure consistent API URL
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1';
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://vertex-market-backend.vercel.app/api/v1';
         const res = await axios.get(`${apiUrl}/products/recommendations/ai-recommended`, config);
         
         if (res.data && res.data.success) {

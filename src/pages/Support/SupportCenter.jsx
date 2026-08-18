@@ -34,8 +34,8 @@ const SupportCenter = () => {
       try {
         setLoading(true);
         const [faqsRes, cmsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/v1/faqs'),
-          fetch('http://localhost:5000/api/v1/cms')
+          fetch('https://vertex-market-backend.vercel.app/api/v1/faqs'),
+          fetch('https://vertex-market-backend.vercel.app/api/v1/cms')
         ]);
         const faqsData = await faqsRes.json();
         const cmsData = await cmsRes.json();
@@ -79,7 +79,7 @@ const SupportCenter = () => {
     }
     setSubmitting(true);
     try {
-      const res = await fetch('http://localhost:5000/api/v1/support/ticket', {
+      const res = await fetch('https://vertex-market-backend.vercel.app/api/v1/support/ticket', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(ticketForm)

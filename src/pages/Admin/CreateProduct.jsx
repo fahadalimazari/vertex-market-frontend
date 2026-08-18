@@ -112,7 +112,7 @@ const CreateProduct = () => {
     };
     const fetchBrands = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/brands');
+        const res = await axios.get('https://vertex-market-backend.vercel.app/api/brands');
         setBrands(res.data.data || []);
       } catch (e) {
         console.error(e);
@@ -189,7 +189,7 @@ const CreateProduct = () => {
         headers.Authorization = `Bearer ${token}`;
       }
 
-      const res = await axios.post('http://localhost:5000/api/uploads/products', formData, {
+      const res = await axios.post('https://vertex-market-backend.vercel.app/api/uploads/products', formData, {
         headers,
         onUploadProgress: (progressEvent) => {
           const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);

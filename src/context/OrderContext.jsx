@@ -62,7 +62,7 @@ export const OrderProvider = ({ children }) => {
       if (!data) return false;
       const { token } = JSON.parse(data);
 
-      const res = await fetch(`http://localhost:5000/api/v1/orders/${orderId}/cancel`, {
+      const res = await fetch(`https://vertex-market-backend.vercel.app/api/v1/orders/${orderId}/cancel`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` }
       });
